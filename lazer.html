@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotina de Lazer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #000000; color: #ffffff; padding: 40px 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 720px; background-color: #111111; border: 1px solid #222222; border-radius: 12px; padding: 30px; }
+        .btn-voltar { display: inline-block; color: #00e676; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        h1 { color: #00e676; margin-bottom: 10px; }
+        p { color: #bbbbbb; line-height: 1.5; margin-bottom: 20px; }
+        .sorteio-box { background-color: #080808; border: 1px solid #2a2a2a; border-radius: 10px; padding: 25px; text-align: center; margin-bottom: 25px; }
+        .sugestao { font-size: 1.4rem; color: #00e676; font-weight: bold; margin-bottom: 15px; min-height: 36px; }
+        button { background-color: #00e676; color: #000000; border: none; padding: 12px 24px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        .grid-regras { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .regra { background-color: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #262626; }
+        .regra h3 { color: #00e676; font-size: 1rem; margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">← Voltar para Central de Rotinas</a>
+        <h1>🎮 Rotina de Lazer e Descanso</h1>
+        <p>O lazer de qualidade recarrega a atenção sem deixar sensação de esgotamento.</p>
+
+        <div class="sorteio-box">
+            <div class="sugestao" id="texto-sugestao">Clique abaixo para sortear uma atividade</div>
+            <button onclick="sortearLazer()">Sortear Atividade Off-Screen</button>
+        </div>
+
+        <div class="grid-regras">
+            <div class="regra">
+                <h3>Lazer Ativo</h3>
+                <p style="font-size: 0.9rem; margin:0;">Caminhar ao ar livre, ouvir música prestando atenção ou conversar sem telas.</p>
+            </div>
+            <div class="regra">
+                <h3>Horário de Corte</h3>
+                <p style="font-size: 0.9rem; margin:0;">Evitar vídeos curtos e notificações 1 hora antes de dormir para não agitar a mente.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const opcoes = [
+            "Ler 15 páginas de um livro de ficção",
+            "Ouvir um álbum inteiro de música sem mexer no celular",
+            "Dar uma caminhada tranquila pelo bairro",
+            "Preparar uma bebida ou receita diferente",
+            "Assistir a um filme completo sem pausar para olhar mensagens",
+            "Organizar a mesa ou o quarto ouvindo podcast"
+        ];
+        function sortearLazer() {
+            const aleatoria = opcoes[Math.floor(Math.random() * opcoes.length)];
+            document.getElementById('texto-sugestao').innerText = aleatoria;
+        }
+    </script>
+</body>
+</html>
