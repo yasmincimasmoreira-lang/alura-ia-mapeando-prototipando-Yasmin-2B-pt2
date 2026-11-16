@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotina de Trabalho</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #000000; color: #ffffff; padding: 40px 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 720px; background-color: #111111; border: 1px solid #222222; border-radius: 12px; padding: 30px; }
+        .btn-voltar { display: inline-block; color: #00e676; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        h1 { color: #00e676; margin-bottom: 10px; }
+        p { color: #bbbbbb; margin-bottom: 20px; }
+        .input-grupo { display: flex; gap: 10px; margin-bottom: 20px; }
+        input[type="text"] { flex: 1; background-color: #080808; border: 1px solid #333333; color: #ffffff; padding: 12px; border-radius: 6px; outline: none; }
+        input[type="text"]:focus { border-color: #00e676; }
+        button { background-color: #00e676; color: #000000; border: none; padding: 0 20px; font-weight: bold; border-radius: 6px; cursor: pointer; }
+        ul { list-style: none; }
+        li { background-color: #1a1a1a; padding: 14px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #2a2a2a; }
+        .feita { text-decoration: line-through; color: #666666; }
+        .acoes span { cursor: pointer; margin-left: 12px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">← Voltar para Central de Rotinas</a>
+        <h1>💼 Rotina de Trabalho</h1>
+        <p>Defina as 3 entregas mais importantes do dia antes de responder mensagens ou e-mails.</p>
+
+        <div class="input-grupo">
+            <input type="text" id="nova-tarefa" placeholder="Adicionar nova entrega ou tarefa...">
+            <button onclick="adicionar()">Adicionar</button>
+        </div>
+
+        <ul id="lista-trabalho">
+            <li><span>Revisar prioridades e metas da semana</span><div class="acoes"><span style="color:#00e676" onclick="concluir(this)">✔</span><span style="color:#ff5252" onclick="remover(this)">✖</span></div></li>
+            <li><span>Executar tarefa principal no bloco da manhã</span><div class="acoes"><span style="color:#00e676" onclick="concluir(this)">✔</span><span style="color:#ff5252" onclick="remover(this)">✖</span></div></li>
+            <li><span>Organizar pendências para o dia seguinte</span><div class="acoes"><span style="color:#00e676" onclick="concluir(this)">✔</span><span style="color:#ff5252" onclick="remover(this)">✖</span></div></li>
+        </ul>
+    </div>
+
+    <script>
+        function adicionar() {
+            const input = document.getElementById('nova-tarefa');
+            if (!input.value.trim()) return;
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${input.value}</span><div class="acoes"><span style="color:#00e676" onclick="concluir(this)">✔</span><span style="color:#ff5252" onclick="remover(this)">✖</span></div>`;
+            document.getElementById('lista-trabalho').appendChild(li);
+            input.value = '';
+        }
+        function concluir(el) { el.closest('li').querySelector('span').classList.toggle('feita'); }
+        function remover(el) { el.closest('li').remove(); }
+    </script>
+</body>
+</html>
