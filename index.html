@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Rotinas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #000000; color: #ffffff; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+        header { text-align: center; margin-bottom: 40px; }
+        header h1 { font-size: 2.2rem; margin-bottom: 8px; color: #00e676; }
+        header p { color: #888888; }
+        .grid-rotina { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; width: 100%; max-width: 960px; }
+        .card { background-color: #111111; border: 1px solid #222222; border-radius: 12px; padding: 25px; text-decoration: none; color: #ffffff; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-4px); border-color: #00e676; }
+        .card h2 { font-size: 1.35rem; margin-bottom: 10px; color: #00e676; }
+        .card p { color: #bbbbbb; font-size: 0.95rem; line-height: 1.4; margin-bottom: 20px; }
+        .card .btn-abrir { font-size: 0.85rem; font-weight: bold; color: #00e676; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Central de Rotinas</h1>
+        <p id="saudacao">Selecione uma área para aprofundar</p>
+    </header>
+
+    <main class="grid-rotina">
+        <a href="estudo.html" class="card">
+            <div>
+                <h2>📚 Estudo</h2>
+                <p>Ciclos de foco profundo, revisões espaçadas e organização de matérias.</p>
+            </div>
+            <span class="btn-abrir">Abrir página →</span>
+        </a>
+
+        <a href="trabalho.html" class="card">
+            <div>
+                <h2>💼 Trabalho</h2>
+                <p>Priorização de entregas, blocos de execução e controle de tarefas do dia.</p>
+            </div>
+            <span class="btn-abrir">Abrir página →</span>
+        </a>
+
+        <a href="lazer.html" class="card">
+            <div>
+                <h2>🎮 Lazer</h2>
+                <p>Descanso intencional, desconexão digital e ideias para recarregar a mente.</p>
+            </div>
+            <span class="btn-abrir">Abrir página →</span>
+        </a>
+
+        <a href="hobby.html" class="card">
+            <div>
+                <h2>🎨 Hobby</h2>
+                <p>Projetos pessoais, prática criativa e acompanhamento de evolução.</p>
+            </div>
+            <span class="btn-abrir">Abrir página →</span>
+        </a>
+
+        <a href="esportes.html" class="card">
+            <div>
+                <h2>⚽ Esportes</h2>
+                <p>Treinos físicos, modalidades praticadas, metas de desempenho e alongamento.</p>
+            </div>
+            <span class="btn-abrir">Abrir página →</span>
+        </a>
+
+        <a href="saude.html" class="card">
+            <div>
+                <h2>🩺 Saúde</h2>
+                <p>Controle de hidratação, higiene do sono, alimentação e bem-estar diário.</p>
+            </div>
+            <span class="btn-abrir">Abrir página →</span>
+        </a>
+    </main>
+
+    <script>
+        const hora = new Date().getHours();
+        const saudacao = document.getElementById('saudacao');
+        if (hora < 12) saudacao.innerText = "Bom dia! Escolha qual rotina deseja gerenciar:";
+        else if (hora < 18) saudacao.innerText = "Boa tarde! Escolha qual rotina deseja gerenciar:";
+        else saudacao.innerText = "Boa noite! Escolha qual rotina deseja gerenciar:";
+    </script>
+</body>
+</html>
