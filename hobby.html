@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotina de Hobby</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #000000; color: #ffffff; padding: 40px 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 720px; background-color: #111111; border: 1px solid #222222; border-radius: 12px; padding: 30px; }
+        .btn-voltar { display: inline-block; color: #00e676; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        h1 { color: #00e676; margin-bottom: 10px; }
+        p { color: #bbbbbb; line-height: 1.5; margin-bottom: 20px; }
+        .contador-box { background-color: #080808; border: 1px solid #2a2a2a; border-radius: 10px; padding: 25px; text-align: center; margin-bottom: 25px; }
+        .numero { font-size: 3rem; font-weight: bold; color: #00e676; margin: 10px 0; }
+        button { background-color: #00e676; color: #000000; border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; margin: 0 5px; }
+        button.sec { background-color: #222222; color: #ffffff; }
+        .dica { background-color: #1a1a1a; padding: 15px; border-radius: 8px; border-left: 4px solid #00e676; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">← Voltar para Central de Rotinas</a>
+        <h1>🎨 Rotina de Hobby e Prática Criativa</h1>
+        <p>Dedique 30 minutos por dia a uma habilidade que você faz apenas pelo prazer de aprender (desenho, música, programação, escrita, etc.).</p>
+
+        <div class="contador-box">
+            <span style="color:#888888; text-transform: uppercase; font-size: 0.85rem;">Sessões concluídas este mês</span>
+            <div class="numero" id="sessoes">0</div>
+            <button onclick="alterarSessao(1)">+ Registrar Sessão</button>
+            <button class="sec" onclick="alterarSessao(-1)">- Corrigir</button>
+        </div>
+
+        <div class="dica">
+            <strong>Regra da Constância:</strong> Não espere ter 2 horas livres. Fazer 20 minutos bem feitos 4 vezes na semana gera muito mais evolução do que tentar fazer tudo no fim de semana.
+        </div>
+    </div>
+
+    <script>
+        let total = 0;
+        function alterarSessao(valor) {
+            total = Math.max(0, total + valor);
+            document.getElementById('sessoes').innerText = total;
+        }
+    </script>
+</body>
+</html>
