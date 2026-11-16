@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotina de Esportes</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #000000; color: #ffffff; padding: 40px 20px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 720px; background-color: #111111; border: 1px solid #222222; border-radius: 12px; padding: 30px; }
+        .btn-voltar { display: inline-block; color: #00e676; text-decoration: none; font-weight: bold; margin-bottom: 20px; }
+        h1 { color: #00e676; margin-bottom: 10px; }
+        p { color: #bbbbbb; margin-bottom: 20px; }
+        .abas { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .abas button { background-color: #1a1a1a; color: #ffffff; border: 1px solid #333333; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .abas button.ativo { background-color: #00e676; color: #000000; border-color: #00e676; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #222222; }
+        th { color: #00e676; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="btn-voltar">← Voltar para Central de Rotinas</a>
+        <h1>⚽ Rotina de Esportes e Condicionamento</h1>
+        <p>Alterne estímulos de força, resistência cardiovascular e mobilidade ao longo da semana.</p>
+
+        <div class="abas">
+            <button class="ativo" onclick="carregarPlano('forca', this)">Força e Resistência</button>
+            <button onclick="carregarPlano('cardio', this)">Corrida / Cardio</button>
+            <button onclick="carregarPlano('mobilidade', this)">Mobilidade e Recuperação</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Atividade</th>
+                    <th>Volume / Duração</th>
+                    <th>Foco</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-esporte"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const planos = {
+            forca: [
+                { atv: "Aquecimento articular + Polichinelos", vol: "5 min", foco: "Preparação" },
+                { atv: "Flexões de braço / Supino", vol: "4 séries x 10-12", foco: "Empurrar" },
+                { atv: "Barra fixa / Remada", vol: "4 séries x 8-12", foco: "Puxar" },
+                { atv: "Agachamento livre / Afundo", vol: "4 séries x 12", foco: "Pernas" }
+            ],
+            cardio: [
+                { atv: "Trote leve de aquecimento", vol: "5 min", foco: "Frequência cardíaca" },
+                { atv: "Corrida contínua ou Ciclismo", vol: "25 a 35 min", foco: "Resistência aeróbica" },
+                { atv: "Tiros curtos (opcional)", vol: "5 x 100m", foco: "Explosão" }
+            ],
+            mobilidade: [
+                { atv: "Alongamento posterior de coxa e quadril", vol: "3 x 30s", foco: "Flexibilidade" },
+                { atv: "Mobilidade torácica e ombros", vol: "3 x 10 reps", foco: "Postura" },
+                { atv: "Prancha isométrica", vol: "3 x 45s", foco: "Estabilidade do core" }
+            ]
+        };
+
+        function carregarPlano(tipo, btn) {
+            document.querySelectorAll('.abas button').forEach(b => b.classList.remove('ativo'));
+            if (btn) btn.classList.add('ativo');
+            const tbody = document.getElementById('tabela-esporte');
+            tbody.innerHTML = planos[tipo].map(item => `<tr><td>${item.atv}</td><td>${item.vol}</td><td>${item.foco}</td></tr>`).join('');
+        }
+        carregarPlano('forca');
+    </script>
+</body>
+</html>
